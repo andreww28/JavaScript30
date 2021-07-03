@@ -59,6 +59,28 @@
 
 <script>
 
+  window.addEventListener("keydown", (e) => {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const box = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    if(audio === null) return;
+
+    box.classList.add("playing");
+    audio.play();
+    audio.currentTime = 0;
+  });
+
+  const boxes = document.querySelectorAll('.key');
+  console.log(boxes);
+
+  boxes.forEach((box) => {
+    box.addEventListener("transitionend", (e) => {
+      box.classList.remove("playing");
+    });
+  });
+  
+
+
 </script>
 
 
